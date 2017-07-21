@@ -43,27 +43,33 @@ The data are then used for two purposes:
   1. Visualize surfing trends (by time, site, surfboard, etc)
   2. Predict the *personalized* quality of surf, given a set of conditions (e.g., swell and tide)
 
-As an example, I have plotted the number of surf sessions in central California over the past ~3 years:
+As an example, I used an example dataset with 86 records of surf sessions over four years in Monterey, California to represent a central California surfer. Below, I plot the monthly number of surf sessions:
 
 ![Figure 1](../figs/plot_dat_yrm_n.png)
 
-But the real benefit of the app will be to inform the user whether a particular site, given the current conditions, will be worth surfing. The statistical model will take the current NOAA and tide conditions, and integrate them with the historical user data to predict a metric of quality (e.g., number of predicted rides, rating). 
+But the real benefit of the app will be to inform the user whether a particular site, given the current conditions, will be worth surfing. The statistical model will take the current NOAA, tide, and weather conditions, and integrate them with the historical user data to predict a metric of quality (e.g., number of predicted rides, rating). 
 
-For example, I used 86 records of surf sessions at one site near Monterey, California to make predictions using a simple linear model with swell period, swell height, swell direction, and tide. The predicted number of rides for each variable is presented below:
+For example, using my central California surfer I can make predictions using a simple linear model with swell period, swell height, swell direction, and tide. The predicted number of rides for each variable is presented below:
 
 ![Figure 2](../figs/plot_lm_effects_ridecount.png)
 
 ## Conclusions
 
-In brief, the model suggests I have the best session (in terms of ride count) when the swell height is small (< 4 ft) and the swell direction is from the northwest (> 300).  To a lesser extent, I surf more waves at lower tide and when the swell is larger, but these effects are marginal. 
+In brief, the model suggests the central California Surfer has the best session (in terms of ride count) when the swell height is small (< 4 ft) and the swell direction is from the northwest (> 300).  To a lesser extent, central California surfer surfs more waves at lower tide and when the swell is larger, but these effects are marginal. 
 
-This analysis is based on my surf log, together with hand-entered data for the swell and tide conditions. However, the data scraping can be automated. Moreover, the statistical model can likely be improved. During the Data Incubator fellowship, I foresee the following steps for completing the app:
+This analysis is based on an example surf log, together with hand-entered data for the swell and tide conditions. However, the data scraping can be automated. Moreover, the statistical model can likely be improved. I foresee the following steps for completing the app over the next three months:
 
   1. Automate the web scraping of NOAA and tide conditions
-  2. Determine the best statistical model (e.g., regression, CART, etc)
-  3. Develop the app to be user friendly (i.e., not a spreadsheet and R)
+  2. Automate the web scraping of weather conditions
+  3. Determine the best statistical model (e.g., regression, CART, etc)
+  4. Develop the app to be user friendly (i.e., not a spreadsheet and R)
+    - for example, create a ranking system of the surfer's beaches given a set of conditions
+    - identify when there is high or low confidence for a given prediction (a function of the input data)
   
 
+## Copyright
+Copyright 2017 Robin Elahi
 
+<https://github.com/elahi/surflog/blob/master/LICENSE>
 
 
