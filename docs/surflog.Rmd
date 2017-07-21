@@ -53,7 +53,16 @@ For example, I used 86 records of surf sessions at one site near Monterey, Calif
 
 ![Figure 2](../figs/plot_lm_effects_ridecount.png)
 
+## Conclusions
+
 In brief, the model suggests I have the best session (in terms of ride count) when the swell height is small (< 4 ft) and the swell direction is from the northwest (> 300).  To a lesser extent, I surf more waves at lower tide and when the swell is larger, but these effects are marginal. 
+
+This analysis is based on my surf log, together with hand-entered data for the swell and tide conditions. However, the data scraping can be automated. Moreover, the statistical model can likely be improved. During the Data Incubator fellowship, I foresee the following steps for completing the app:
+
+  1. Automate the web scraping of NOAA and tide conditions
+  2. Determine the best statistical model (e.g., regression, CART, etc)
+  3. Develop the app to be user friendly (i.e., not a spreadsheet and R)
+  
 
 
 
