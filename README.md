@@ -1,37 +1,57 @@
-## Welcome to GitHub Pages
+surflog
+========================================================
+author: Robin Elahi
+date: August 7, 2017
+autosize: true
 
-You can use the [editor on GitHub](https://github.com/elahi/surflog/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+1
+===
+![](../images/nick-1.jpg)
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+2
+===
+- The need
 
-### Markdown
+3
+===
+- User inputs
+- Ocean conditions
+- *surflog* outputs
+  1. Visualize your sessions
+  2. Predict your next session
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+4 - Visualize your sessions
+====================================
+![](../figs/plot_dat_yrm_n.png)
 
-```markdown
-Syntax highlighted code block
 
-# Header 1
-## Header 2
-### Header 3
+5 - Visualize your sessions
+====================================
+![](../figs/map_3_panels.png)
 
-- Bulleted
-- List
 
-1. Numbered
-2. List
+6 - Predicting the number of rides
+====================================
+<br>
+<br>
+Generalized linear model with four predictors
+  - Swell height, period and direction
+  - Tidal height
+<br>
+<br>
+<br>
+$$Rides_{i} = Poisson(\mu_{i})$$
+<br>
+$$E(Rides_{i}) = var(Rides_{i}) = \mu_{i}$$
+<br>
+$$log(\mu_{i}) = \alpha + \beta_{h}Height_{i} + \beta_{p}Period_{i} ~+$$ 
+$$\beta_{d}Direction_{i} + \beta_{t}Tide_{i}$$ 
 
-**Bold** and _Italic_ and `Code` text
+The money plot
+========================================================
+![](../figs/predict_session_random.png)
 
-[Link](url) and ![Image](src)
-```
+Observed vs predicted
+========================================================
+![](../figs/obs_pred_ride_count.png)
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/elahi/surflog/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
