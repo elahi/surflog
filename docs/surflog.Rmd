@@ -107,7 +107,7 @@ I used this modeling approach to predict the number of rides at hourly intervals
 
 For simplicity, I will focus on five randomly selected days for which there was a surf session, and compare the predicted number of rides (at all of the sites) with the observed number of rides at a single site. 
 
-![Figure 5. Predicted number of rides on five randomly selected surf days. The lines represent the predictions, and the single large point on each panel represents the observed number of rides. Predictions of zero rides have been omitted for clarity.](../figs/predict_session_random.png)
+![Figure 4. Predicted number of rides on five randomly selected surf days. The lines represent the predictions, and the single large point on each panel represents the observed number of rides. Predictions of zero rides have been omitted for clarity.](../figs/predict_session_random.png)
 
 <br>
 
@@ -115,7 +115,7 @@ On some dates, the model fit the data reasonably well- for example, the predicti
 
 In summary, I plot the observations against predictions below:
 
-![Figure 6. Observed number of rides plotted against the predicted number of rides. ](../figs/obs_pred_ride_count.png)
+![Figure 5. Observed number of rides plotted against the predicted number of rides. ](../figs/obs_pred_ride_count.png)
 
 <br> 
 

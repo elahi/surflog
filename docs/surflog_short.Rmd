@@ -1,0 +1,72 @@
+---
+title: "surflog"
+author: "Robin Elahi"
+date: "August 6, 2017"
+output:
+  pdf_document:
+    fig_caption: yes
+    latex_engine: pdflatex
+---
+
+```{r setup, include = FALSE, cache = FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, 
+                      fig.path = 'figs/', cache.path = 'cache/graphics-', 
+                      fig.align = 'center', fig.width = 5, fig.height = 5, fig.show = 'hold', cache = TRUE, par = TRUE)
+
+```
+
+![Not all surfers have the luxury of time](../images/nick-1.jpg)
+
+## *surflog*: a tool to predict the best surf for you
+
+- User inputs
+- Ocean conditions
+- *surflog* outputs
+    1. Visualize your sessions
+    2. Predict where and when to surf
+
+\newpage
+
+## Visualize your sessions
+
+![Number of surf session per month over a three year period in Central California](../figs/plot_dat_yrm_n.png)
+
+\newpage
+
+## Visualize your sessions 
+
+![Visualizing a surf log from Monterey Bay, California. The colored sites are ones that will be used in model predictions. Note that some sites are infrequently visited but are worth the trip, like Capitola.](../figs/map_mbay_n.png)
+
+\newpage
+
+## Predict where and when to surf
+
+Generalized linear model with four predictors
+
+  - Swell height (WVHT), period (DPD) and direction (MWD)
+  - Tidal height (TideHeight)
+  
+$$Rides_{i} = Poisson(\mu_{i})$$
+$$E(Rides_{i}) = var(Rides_{i}) = \mu_{i}$$
+$$log(\mu_{i}) = \alpha + \beta_{h}Height_{i} + \beta_{p}Period_{i} + \beta_{d}Direction_{i} + \beta_{t}Tide_{i}$$ 
+
+![Partial effects of each predictor from the generalized linear model fit to the surf log data from one site, Asilomar.](../figs/plot_glm_effects_ridecount.png){width=90%}
+
+\newpage
+
+## Predict where and when to surf
+
+![Predicted number of rides on five randomly selected surf days. The lines represent the predictions, and the single large point on each panel represents the observed number of rides. Predictions of zero rides have been omitted for clarity.](../figs/predict_session_random.png)
+
+\newpage
+
+## Predict where and when to surf
+
+![Observed number of rides plotted against the predicted number of rides. ](../figs/obs_pred_ride_count.png)
+
+\newpage
+
+## Github page
+<https://github.com/elahi/surflog/>
+
+
