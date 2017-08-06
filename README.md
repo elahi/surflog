@@ -22,12 +22,12 @@ autosize: true
 
 4 - Visualize your sessions
 ====================================
-![](../figs/plot_dat_yrm_n.png)
+![](/figs/plot_dat_yrm_n.png)
 
 
 5 - Visualize your sessions
 ====================================
-![](../figs/map_3_panels.png)
+![](/figs/map_3_panels.png)
 
 
 6 - Predicting the number of rides
