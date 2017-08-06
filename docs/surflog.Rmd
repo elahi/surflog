@@ -80,7 +80,7 @@ And here I plot the spatial distribution of the surf sessions, summarized in the
   - the median rating per session at each site
   
 
-<!-- ![Figure 2. Visualizing a surf log from Monterey Bay, California. The colored sites are ones that will be used in model predictions. Note that some sites are infrequently visited but are worth the trip, like Capitola.](../figs/map_3_panels.png) -->
+![Figure 2. Visualizing a surf log from Monterey Bay, California. The colored sites are ones that will be used in model predictions. Note that some sites are infrequently visited but are worth the trip, like Capitola.](../figs/map_3_panels.png)
 
 <br>
 
@@ -121,7 +121,7 @@ In summary, I plot the observations against predictions below:
 
 The model appears to fit the extremes better than intermediate values, but a few more sessions are needed (especially at Capitola!) to improve confidence in these estimates. 
 
-## Conclusions
+## Next steps
 
 This analysis is based on an example surf log, integrated with hourly swell and tide conditions over a three year period - and demonstrates reasonable proof of concept. However, there is room for improvement in many respects. For example: 
 
