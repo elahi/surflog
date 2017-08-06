@@ -15,7 +15,7 @@ knitr::opts_chunk$set(echo = FALSE, message = FALSE,
 
 ```
 
-![Not all surfers have the luxury of time](../images/nick-1.jpg)
+![Not all surfers have the luxury of time.](../images/nick-1.jpg)
 
 ## *surflog*: a tool to predict the best surf for you
 
@@ -29,13 +29,13 @@ knitr::opts_chunk$set(echo = FALSE, message = FALSE,
 
 ## Visualize your sessions
 
-![Number of surf session per month over a three year period in Central California](../figs/plot_dat_yrm_n.png)
+![Number of surf session per month over a three year period in Central California.](../figs/plot_dat_yrm_n.png)
 
 \newpage
 
 ## Visualize your sessions 
 
-![Visualizing a surf log from Monterey Bay, California. The colored sites are ones that will be used in model predictions. Note that some sites are infrequently visited but are worth the trip, like Capitola.](../figs/map_mbay_n.png)
+![Visualizing a surf log from Monterey Bay, California. The colored sites are ones that will be used in model predictions.](../figs/map_mbay_n.png)
 
 \newpage
 
@@ -62,11 +62,12 @@ $$log(\mu_{i}) = \alpha + \beta_{h}Height_{i} + \beta_{p}Period_{i} + \beta_{d}D
 
 ## Predict where and when to surf
 
-![Observed number of rides plotted against the predicted number of rides. ](../figs/obs_pred_ride_count.png)
+![Observed number of rides plotted against the predicted number of rides.](../figs/obs_pred_ride_count.png)
 
 \newpage
 
 ## Github page
+
 <https://github.com/elahi/surflog/>
 
 
