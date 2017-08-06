@@ -1,7 +1,7 @@
 ---
 title: "surflog"
 author: "Robin Elahi"
-date: "July 21, 2017"
+date: "August 5, 2017"
 output:
   html_document: default
   pdf_document: default
@@ -14,11 +14,11 @@ knitr::opts_chunk$set(echo = FALSE, message = FALSE,
 
 ```
 
-## *surflog*: a personalized tool to predict the best conditions for your favorite surf spot 
+## *surflog*: a tool to predict the best surf for you
 
 Athletes have embraced new technologies to improve and enjoy their sporting activities.  For example, Strava (<https://www.strava.com/>) is a mobile app and website designed for runners and cyclers to track their routes. Surfers are no different. While there are many apps geared towards understanding surf conditions (e.g., <http://www.surfline.com/>, <http://magicseaweed.com/>), and more recently, sensors to track individual rides (<http://www.traceup.com/>), there is a clear void in the middle ground.  
 
-I view this middle ground as being a simple, personalized application that learns from each individuals lifetime surfing experience, and predicts the quality of a surf session based on simple inputs. In other words - I seek to help answer age-old questions for surfers, like - should I go surfing today? Where should I go surfing today? But the answers to these questions are not generic (e.g., from surfing websites), but rather, tailored to the individual. 
+I view this middle ground as a simple, personalized application that learns from each individuals lifetime surfing experience, and predicts the quality of a surf session based on simple inputs. In other words - I seek to help answer age-old questions for surfers, like - should I go surfing today? Where should I go surfing today? But the answers to these questions are not generic (e.g., from surfing websites), but rather, tailored to the individual. 
 
 ### User inputs
 
@@ -36,33 +36,75 @@ These would include, for example:
 
 The user inputs are used to determine the conditions for each session, including:
 
-  - Swell period
   - Swell height
+  - Swell period
   - Swell direction
   - Tide height
   - Wind speed
 
 using the following data sources:
 
-  - Swell conditions scraped from NOAA <http://www.ndbc.noaa.gov/>
-  - Tide height scraped from <http://tbone.biol.sc.edu/tide/>
+  - Hourly records of swell conditions from NOAA buoys
+    - <http://www.ndbc.noaa.gov/>
+  - Hourly records of tide height using the R package *rtide* 
+    - <https://cran.r-project.org/web/packages/rtide/index.html>
 
 ### *surflog* outputs
 
 The user inputs and ocean conditions are used for two purposes:
 
-  1. Visualize surfing trends (by time, site, surfboard, etc)
-  2. Predict the *personalized* quality of surf, given a set of conditions (e.g., swell and tide)
+  1. Visualize surfing trends 
+  2. Predict the *personalized* quality of surf, given a set of ocean conditions
 
-As an example, I used an example dataset with 86 records of surf sessions over three years in Monterey, California to represent a central California surfer. Below, I plot the monthly number of surf sessions:
+I used a dataset of surf sessions over three years in Monterey, California for demonstration. This surf log was then integrated with hourly buoy data from Monterey Bay from 2013-present, as well as hourly tidal heights for Monterey bay over the same period. 
 
-![](../figs/plot_dat_yrm_n.png)
+I used the following packages in **R**:
 
-But the real benefit of the app will be to inform the user whether a particular site, given the current conditions, will be worth surfing. The statistical model will take the current NOAA, tide, and weather conditions, and integrate them with the historical user data to predict a metric of quality (e.g., number of predicted rides, rating). 
+  - Data wrangling: dplyr, readr, tidyr, lubridate, readxl
+  - Plotting: ggplot2, cowplot
+  - Mapping: ggmap
+  - Other: rtide, effects, knitr
 
-For example, using my central California surfer I can make predictions using a simple linear model with swell period, swell height, swell direction, and tide. The predicted number of rides for each variable is presented below:
+#### 1. Visualizing surfing trends
 
-![](../figs/plot_lm_effects_ridecount.png)
+Below, I plot the monthly number of surf sessions:
+
+![Figure 1. Number of surf session per month over a three year period in Central California](../figs/plot_dat_yrm_n.png)
+
+<br>
+
+And here I plot the spatial distribution of the surf sessions, summarized in the following ways:
+
+  - the total number of sessions at each site
+  - the median number of rides per session at each site
+  - the median rating per session at each site
+  
+
+![Figure 2. Visualizing a surf log from Monterey Bay, California. The colored sites are ones that will be used in model predictions. Note that some sites are infrequently visited but are worth the trip, like Capitola.](../figs/map_3_panels.png)
+
+<br>
+
+#### 2. Predicting the quality of surf sessions
+
+The real benefit of the app will be to inform the user whether a particular site, given the current conditions, will be worth surfing.  The statistical model will take the current NOAA, tide, and weather conditions, and integrate them with the historical user data to predict a metric of quality. As a simple starting point, I fit the following generalized linear model, using a poisson distribution because I was modeling a count outcome (the number of rides per session *i*):
+
+$$Rides_{i} = Poisson(\mu_{i})$$
+$$E(Rides_{i}) = var(Rides_{i}) = \mu_{i}$$
+
+$$log(\mu_{i}) = \alpha + \beta_{h}Height_{i} + \beta_{p}Period_{i} + \beta_{d}Direction_{i} + \beta_{t}Tide_{i}$$ 
+
+where *Height* is swell height (WVHT; m), *Period* is the dominant swell period (DPD; s), *Direction* is the mean wave direction (MWD; degrees), and *Tide* is the tidal height (TideHeight; m). 
+
+
+I fit the model to the central California surf log for each site separately. I can use the model to predict the number of rides as a function of each variable (while holding all others at their median value), and thus visualize the partial effects for one site below: 
+
+![Figure 3. Partial effects of each predictor from the generalized linear model fit to the surf log data from one site, Asilomar.](../figs/plot_glm_effects_ridecount.png)
+
+<br>
+
+I used this modeling approach to predict the number of rides at hourly intervals for each of five sites over a three year period. Here I focus on the ability of the model to hindcast surf quality in order to validate and fine-tune the modeling approach. Ultimately, however, the goal will be to forecast future surf quality given the predicted ocean conditions. 
+
+
 
 ## Conclusions
 
