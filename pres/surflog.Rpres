@@ -1,0 +1,23 @@
+surflog
+========================================================
+author: Robin Elahi
+date: August 6, 2017
+autosize: true
+
+Surf bum
+===========
+![](../images/nick-1.jpg)
+
+Slide With Code
+====================================
+```{r}
+summary(cars)
+```
+
+Observed vs predicted
+========================================================
+![](../figs/obs_pred_ride_count.png)
+
+The money plot
+========================================================
+![](../figs/predict_session_random.png)
