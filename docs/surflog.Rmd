@@ -60,7 +60,7 @@ I used a dataset of surf sessions over three years in Monterey, California for d
 
 I used the following packages in **R**:
 
-  - Data wrangling: dplyr, readr, tidyr, lubridate, readxl
+  - Data wrangling: dplyr, readr, tidyr, lubridate
   - Plotting: ggplot2, cowplot
   - Mapping: ggmap
   - Other: rtide, effects, knitr
@@ -95,29 +95,51 @@ $$log(\mu_{i}) = \alpha + \beta_{h}Height_{i} + \beta_{p}Period_{i} + \beta_{d}D
 
 where *Height* is swell height (WVHT; m), *Period* is the dominant swell period (DPD; s), *Direction* is the mean wave direction (MWD; degrees), and *Tide* is the tidal height (TideHeight; m). 
 
-
 I fit the model to the central California surf log for each site separately. I can use the model to predict the number of rides as a function of each variable (while holding all others at their median value), and thus visualize the partial effects for one site below: 
 
 ![Figure 3. Partial effects of each predictor from the generalized linear model fit to the surf log data from one site, Asilomar.](../figs/plot_glm_effects_ridecount.png)
 
 <br>
 
-I used this modeling approach to predict the number of rides at hourly intervals for each of five sites over a three year period. Here I focus on the ability of the model to hindcast surf quality in order to validate and fine-tune the modeling approach. Ultimately, however, the goal will be to forecast future surf quality given the predicted ocean conditions. 
+These partial effects plots suggest the central California Surfer has the best session (in terms of ride count) when the swell height is small (< 4 ft) and the swell direction is from the northwest (> 300).  To a lesser extent, central California surfer surfs more waves at lower tide and when the swell is larger, but these effects are marginal. 
 
+I used this modeling approach to predict the number of rides at hourly intervals for each of five sites over a three year period. Here I focus on the ability of the model to hindcast surf quality in order to validate and fine-tune the modeling approach. Ultimately, however, the goal will be to forecast future surf quality given the current and predicted ocean conditions. 
 
+For simplicity, I will focus on five randomly selected days for which there was a surf session, and compare the predicted number of rides (at all of the sites) with the observed number of rides at a single site. 
+
+![Figure 5. Predicted number of rides on five randomly selected surf days. The lines represent the predictions, and the single large point on each panel represents the observed number of rides. Predictions of zero rides have been omitted for clarity.](../figs/predict_session_random.png)
+
+<br>
+
+On some dates, the model fit the data reasonably well- for example, the predictions for 2014, 2016, and 2017 were very similar to the actual number of rides. The best site, for a given time, was chosen on several occasions, but the timing and location could have been better to catch more waves (e.g., 2014, 2016). 
+
+In summary, I plot the observations against predictions below:
+
+![Figure 6. Observed number of rides plotted against the predicted number of rides. ](../figs/obs_pred_ride_count.png)
+
+<br> 
+
+The model appears to fit the extremes better than intermediate values, but a few more sessions are needed (especially at Capitola!) to improve confidence in these estimates. 
 
 ## Conclusions
 
-In brief, the model suggests the central California Surfer has the best session (in terms of ride count) when the swell height is small (< 4 ft) and the swell direction is from the northwest (> 300).  To a lesser extent, central California surfer surfs more waves at lower tide and when the swell is larger, but these effects are marginal. 
+This analysis is based on an example surf log, integrated with hourly swell and tide conditions over a three year period - and demonstrates reasonable proof of concept. However, there is room for improvement in many respects. For example: 
 
-This analysis is based on an example surf log, together with hand-entered data for the swell and tide conditions. However, the data scraping will be automated. Moreover, the statistical model can be improved. I foresee the following steps for completing the app over the next three months:
-
-  1. Automate the web scraping of NOAA and tide conditions
-  2. Automate the web scraping of weather conditions
-  3. Determine the best statistical model (e.g., regression, CART, etc)
-  4. Develop the app to be user friendly (i.e., not a spreadsheet and R)
-    - for example, create a ranking system of the surfer's beaches given a set of conditions
-    - identify when there is high or low confidence for a given prediction (a function of the input data)
+  1. Automate the web scraping of NOAA and tide conditions for any given site
+  2. Automate the web scraping of weather conditions (and incorporate into model)
+  3. Improve the modeling approach
+  4. Train the model with a larger dataset
+    - Include surfers of varying experience, gender, age, fitness level
+    - Include different regions of the world
+  5. Test the sensitivity of the predictions to data availability
+  6. Forecasts in addition to hindcasts
+  7. Develop a user-friendly tool
+    - Simple input on mobile device
+        - use existing technologies to make this painless
+        - e.g., location services, reminders for input, speech recognition
+    - Simple output
+        - create a ranking system of the surfer's beaches given a set of conditions
+        - identify when there is high (green light) or low (yellow light) confidence for a given prediction 
   
 ## Copyright
 Copyright 2017 Robin Elahi
