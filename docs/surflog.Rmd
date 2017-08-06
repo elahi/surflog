@@ -80,7 +80,7 @@ And here I plot the spatial distribution of the surf sessions, summarized in the
   - the median rating per session at each site
   
 
-![Figure 2. Visualizing a surf log from Monterey Bay, California. The colored sites are ones that will be used in model predictions. Note that some sites are infrequently visited but are worth the trip, like Capitola.](../figs/map_3_panels.png)
+<!-- ![Figure 2. Visualizing a surf log from Monterey Bay, California. The colored sites are ones that will be used in model predictions. Note that some sites are infrequently visited but are worth the trip, like Capitola.](../figs/map_3_panels.png) -->
 
 <br>
 
