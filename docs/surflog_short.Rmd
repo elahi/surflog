@@ -15,7 +15,7 @@ knitr::opts_chunk$set(echo = FALSE, message = FALSE,
 
 ```
 
-![Not all surfers have the luxury of time.](../images/nick-1.jpg)
+![Not all surfers have the luxury of time.](../images/westy_beach.jpg)
 
 ## *surflog*: a tool to predict the best surf for you
 
