@@ -29,13 +29,13 @@ knitr::opts_chunk$set(echo = FALSE, message = FALSE,
 
 ## Visualize your sessions
 
-![Number of surf session per month over a three year period in Central California.](../figs/plot_dat_yrm_n.png)
+![Number of surf sessions per month over a three year period in Central California.](../figs/plot_dat_yrm_n.png)
 
 \newpage
 
 ## Visualize your sessions 
 
-![Visualizing a surf log from Monterey Bay, California. The colored sites are ones that will be used in model predictions.](../figs/map_mbay_n.png)
+![Visualizing a surf log from Monterey Bay, California. Colored sites will be used in model predictions.](../figs/map_mbay_n.png)
 
 \newpage
 
@@ -50,7 +50,7 @@ $$Rides_{i} = Poisson(\mu_{i})$$
 $$E(Rides_{i}) = var(Rides_{i}) = \mu_{i}$$
 $$log(\mu_{i}) = \alpha + \beta_{h}Height_{i} + \beta_{p}Period_{i} + \beta_{d}Direction_{i} + \beta_{t}Tide_{i}$$ 
 
-![Partial effects of each predictor from the generalized linear model fit to the surf log data from one site, Asilomar.](../figs/plot_glm_effects_ridecount.png){width=90%}
+![Partial effects of each predictor from the model fit to the surf log data from Asilomar.](../figs/plot_glm_effects_ridecount.png){width=90%}
 
 \newpage
 
@@ -62,7 +62,7 @@ $$log(\mu_{i}) = \alpha + \beta_{h}Height_{i} + \beta_{p}Period_{i} + \beta_{d}D
 
 ## Predict where and when to surf
 
-![Observed number of rides plotted against the predicted number of rides.](../figs/obs_pred_ride_count.png)
+![Observed number of rides plotted against the predicted number of rides. The predictions explain 19% of the variation in the observations.](../figs/obs_pred_ride_count.png)
 
 \newpage
 
